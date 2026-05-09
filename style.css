@@ -2,35 +2,37 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Essential for exact width calculations [cite: 883] */
+    -webkit-font-smoothing: antialiased; /* Matches Figma font rendering [cite: 981] */
 }
 
 :root {
-    --brand-blue: #4856D1; /* Exact blue from your 'Contact Us' button [cite: 58-61] */
-    --text-black: #1E1E1E;
-    --text-gray: #4A4A4A;
-    --bg-light: #F9FAFB;
+    --brand-blue: #4856D1; /* Exact Hex from Figma [cite: 1136] */
+    --text-main: #1E1E1E;
+    --text-muted: rgba(0, 0, 0, 0.60); /* [cite: 783] */
     --white: #FFFFFF;
+    --max-width: 1440px; /* [cite: 745] */
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    color: var(--text-black);
-    line-height: 1.6;
+    color: var(--text-main);
+    line-height: 1.5;
     overflow-x: hidden;
 }
 
 .container {
-    max-width: 1200px;
+    width: 100%;
+    max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 80px; /* Standard Figma desktop margins [cite: 940] */
 }
 
 .text-blue { color: var(--brand-blue); }
 
-/* Navbar Styling */
+/* --- Navbar --- */
 .navbar {
-    height: 80px;
+    height: 90px;
     display: flex;
     align-items: center;
     background: var(--white);
@@ -43,12 +45,9 @@ body {
     align-items: center;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 24px;
-    font-weight: 700;
+.logo img {
+    height: 40px; /* Scaling logo to match header height */
+    width: auto;
 }
 
 .nav-links {
@@ -59,22 +58,22 @@ body {
 
 .nav-item {
     text-decoration: none;
-    color: var(--text-black);
+    color: var(--text-main);
     font-weight: 500;
-    transition: color 0.3s;
+    font-size: 18px;
+    color:#000000
 }
 
 .nav-item.active, .nav-item:hover {
-    color: var(--brand-blue); /* Blue hover state from your images [cite: 58] */
+    color: var(--brand-blue);
 }
 
-/* Button Styling (Pill Shape) */
 .btn-contact {
     background: var(--brand-blue);
     color: var(--white);
     border: none;
-    padding: 12px 24px;
-    border-radius: 12px; /* Matching the pill shape in your 'Buttons' image */
+    padding: 14px 28px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -82,26 +81,78 @@ body {
     cursor: pointer;
 }
 
-/* Hero Section */
-.hero { padding: 60px 0; }
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 40px;
-    align-items: center;
+/* --- Hero Section --- */
+/* --- Hero Section Fix --- */
+
+/* --- Updated Hero Section with More Margin --- */
+
+.hero {
+    width: 1440px;
+    min-height: 829px;
+    height: auto;
+    margin: 0 auto;
+    background: var(--white);
+    /* Reduced top padding to pull everything up */
+    padding: 40px 0 100px 0; 
+    /* Applying a slight negative margin to close the gap with the navbar */
+    margin-top: -20px; 
 }
 
-.main-heading {
-    font-size: 56px;
-    line-height: 1.1;
-    margin-bottom: 24px;
+.hero-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    padding: 0 100px;
+    width: 100%;
+    /* Ensures the content starts higher within the hero container */
+    align-self: flex-start; 
+}
+
+.hero-content {
+    width: 606px;
+    height: 583px;
+    display: flex;
+    flex-direction: column;
+    /* Aligns text to the top of its 583px box to move it up further */
+    justify-content: flex-start; 
+    padding-top: 40px;
+    padding-left: 20px; /* Added left padding for better text alignment */
+    flex-shrink: 0;
 }
 
 .hero-description {
-    color: var(--text-gray);
-    margin-bottom: 32px;
+    color: var(--text-muted);
+    margin-bottom: 32px; /* Standardized gap */
     font-size: 18px;
+    line-height: 1.6;
 }
+
+.hero-visual {
+    width: 739.13px;
+    height: 607px;
+    display: flex;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    /* Stronger negative margin to move image up higher than the text */
+    margin-top: 40px; 
+}
+
+.hero-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Enhancing the Heading spacing */
+.main-heading {
+    font-size: 60px; /* Reduced from 72px for a cleaner look */
+    line-height: 1.1; 
+    font-weight: 800;
+    margin-bottom: 24px; /* Maintaining consistent 8pt grid gap */
+    letter-spacing: -1px;
+}
+
 
 .check-list {
     list-style: none;
@@ -112,195 +163,201 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     font-weight: 500;
+    font-size: 18px;
 }
 
 .check-icon {
     background: var(--brand-blue);
     color: white;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 14px;
+    flex-shrink: 0;
 }
 
 .cta-group {
     display: flex;
-    gap: 16px;
+    gap: 20px;
+}
+
+.btn-filled, .btn-outline {
+    height: 56px;
+    padding: 0 40px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .btn-filled {
     background: var(--brand-blue);
     color: white;
     border: none;
-    padding: 16px 32px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
 }
 
 .btn-outline {
     background: transparent;
-    border: 1px solid var(--brand-blue);
+    border: 2px solid var(--brand-blue);
     color: var(--brand-blue);
-    padding: 16px 32px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
 }
 
-/* Why Section */
-.why-section { padding: 100px 0; background: var(--white); }
-.section-header { margin-bottom: 60px; }
-.section-title { font-size: 40px; margin-bottom: 20px; }
-.section-subtitle { max-width: 800px; color: var(--text-gray); }
+.hero-visual {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero-visual img {
+    width: 100%;
+    max-width: 750px; /* Significantly increased to cover the right side [cite: 868, 871] */
+    height: auto;
+}
+
+/* --- Why Section --- */
+.why-section { 
+    /* Changed top padding from 120px to 20px to move content to the top */
+    padding: 0 0 120px 0; 
+    background: var(--white); 
+    margin-top: 0; 
+}
+
+.section-header {
+    width: 1240px; 
+    height: 140px; 
+    /* Reduced bottom margin from 60px to 20px to pull the image/cards up further */
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    gap: 40px;
+    margin: 0px; /* Added top margin to ensure the section starts at the top of its container */
+}
+
+.section-title {
+    white-space: nowrap; 
+    font-size: 48px; 
+    line-height: 1.2;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: -200px; /* Ensures the title starts at the top of its container */
+}
+
+.section-subtitle {
+    flex: 1; 
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--text-muted);
+    max-width: 650px; 
+    color: #000000;
+    margin-top: -176px;
+    
+}
+
+/* Ensure the features container below is aligned correctly */
+
+
 
 .features-container {
+    width: 3000px;
+    margin: 0 auto;
     display: flex;
-    gap: 80px;
-    align-items: flex-start;
+    /* Adjusted gap to give the image more room to grow */
+    gap: 40px; 
+    align-items: center;
+    padding-bottom:20px ;
+    margin: -50px auto 0 auto; /* Pulls the features up to align with the section title and subtitle */
 }
 
-.feature-image img { width: 100%; max-width: 500px; }
+/* --- Left Image Box (Increased Size) --- */
+.feature-image {
+    width: 600px; 
+    height: 480px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    /* Moves the image down slightly */
+    margin-top: 20px; 
+}
 
+.feature-image img {
+    width: 100%;
+    height: 100%;
+    /* Ensures the illustration fills the larger 600px container */
+    object-fit: contain; 
+}
+
+/* --- Feature Cards Sizing (594px Fill x 594px Fill Box) --- */
 .feature-cards {
+    /* Adjust width to accommodate the larger image on the left */
+    width: 600px; 
+
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    flex: 1;
+    /* Reduced gap from 24px/30px to 16px for tighter grouping */
+    gap: 32px; /* changed to 20px for a more compact look */
 }
 
 .feature-card {
-    background: var(--bg-light);
-    padding: 32px;
-    border-radius: 16px;
+    background: #FFFFFF;
+    border: 1px solid #EDEDED;
+    border-radius: 20px;
+   /* Increased padding from 20px 24px to 30px 24px to make cards bigger */
+    padding: 20px 24px; 
     display: flex;
     gap: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
+
+
 .feature-icon-wrapper {
-    background: var(--white);
     width: 48px;
     height: 48px;
-    border-radius: 8px;
+    background: var(--bg-light);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    flex-shrink: 0;
 }
 
-.feature-text h3 { margin-bottom: 8px; font-size: 20px; }
+.feature-text h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
 
-/* Responsive Design */
-@media (max-width: 992px) {
-    .nav-links { display: none; } /* Mobile Menu implementation placeholder */
+.feature-text p {
+    font-size: 18px;
+    line-height: 1.6; /* Increased for better legibility */
+    color: #000000; /* Set to pure black */
+    margin-top: 8px; /* Standardized spacing */
+}
+
+/* --- Responsive & Interactive --- */
+@media (max-width: 1100px) {
+    .container { padding: 0 40px; }
     .hero-grid, .features-container {
         grid-template-columns: 1fr;
         flex-direction: column;
         text-align: center;
     }
-    .cta-group, .feature-card { justify-content: center; }
     .hero-visual img, .feature-image img { max-width: 100%; }
+    .hero-description, .section-subtitle { margin: 0 auto 30px; }
+    .cta-group { justify-content: center; }
 }
 
-/* Update the Hero Visual styling */
-.hero-visual {
-    display: flex;
-    justify-content: center; /* Centers the image if the container is wider */
-    align-items: center;
-}
-
-.hero-visual img {
-    /* Adjust this width based on your Figma "Layout" panel for this element */
-    width: 100%; 
-    max-width: 570px; /* Standard width for this specific Figma illustration [cite: 167, 170] */
-    height: auto;     /* Keeps the picture from looking stretched */
-    object-fit: contain;
-}
-
-/* Ensure the grid doesn't let the image push the text out */
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Split screen 50/50 */
-    align-items: center;
-    gap: 40px; /* Match the gap from Figma [cite: 194-196] */
-}
-
-/* Responsive fix for mobile */
-/* 5. Responsive Design (Mobile 375px) */
-@media (max-width: 768px) {
-    /* Ensure the navbar height expands to fit the links */
-    .navbar {
-        height: auto; 
-        padding: 20px 0;
-    }
-
-    /* Stack Logo, Links, and Button vertically */
-    .nav-flex {
-        flex-direction: column;
-        gap: 20px; /* 8pt grid spacing [cite: 205-207] */
-        text-align: center;
-    }
-
-    /* Make links visible and arranged in a clean row or column */
-    .nav-links {
-        display: flex; 
-        flex-wrap: wrap; /* Allows links to wrap to a second line if the screen is very narrow */
-        justify-content: center;
-        gap: 16px; /* 2x8pt grid gap [cite: 207] */
-        margin: 10px 0;
-    }
-
-    .nav-item {
-        font-size: 14px; /* Slightly larger for easier tapping on mobile */
-    }
-
-    /* Stack the hero and features vertically as required */
-    .hero-grid, .features-container {
-        grid-template-columns: 1fr; 
-        text-align: center;
-    }
-
-    .hero-btns {
-        justify-content: center;
-    }
-
-    .hero-visual img, .feature-image img {
-        max-width: 100%;
-        margin-top: 30px;
-    }
-}
-
-/* --- Hover States --- */
-
-/* Get Started Button Hover */
-.btn-filled:hover {
-    background-color: #3644b1; /* A slightly darker shade of your brand blue */
-    transform: translateY(-1px); /* Subtle lift effect */
-    transition: all 0.3s ease; /* Smooth transition as per guidelines */
-}
-
-/* Book A Consultation Button Hover */
-.btn-outline:hover {
-    background-color: rgba(72, 86, 209, 0.05); /* Very light blue tint inside the button */
-    border-color: #3644b1; /* Darker border on hover */
-    color: #3644b1;
-    transition: all 0.3s ease;
-}
-
-/* Contact Us (Navbar) Button Hover */
-.btn-contact:hover {
+.btn-filled:hover, .btn-contact:hover {
     background-color: #3644b1;
-    box-shadow: 0 4px 12px rgba(72, 86, 209, 0.3); /* Adds a soft glow effect */
-    transition: all 0.3s ease;
-}
-
-/* Active state for when the button is actually clicked */
-.btn-filled:active, .btn-contact:active {
-    transform: translateY(0);
-    filter: brightness(0.9);
+    transform: translateY(-2px);
+    transition: 0.3s ease;
 }
