@@ -32,10 +32,11 @@ body {
 
 /* --- Navbar --- */
 .navbar {
-    height: 90px;
+    height: 96px;
     display: flex;
     align-items: center;
     background: var(--white);
+    border-bottom: 2px dotted rgba(72, 86, 209, 0.7);
 }
 
 .nav-flex {
@@ -43,25 +44,45 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 170px;
 }
 
 .logo img {
-    height: 40px; /* Scaling logo to match header height */
+    height: 40px;
     width: auto;
+    display: block;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -0.04em;
 }
 
 .nav-links {
     display: flex;
+    align-items: center;
+    justify-content: center;
     list-style: none;
-    gap: 32px;
+    gap: 30px;
+    flex: 1;
 }
 
 .nav-item {
     text-decoration: none;
     color: var(--text-main);
     font-weight: 500;
-    font-size: 18px;
-    color:#000000
+    font-size: 17px;
+    line-height: 1;
+    letter-spacing: 0.01em;
 }
 
 .nav-item.active, .nav-item:hover {
@@ -72,13 +93,16 @@ body {
     background: var(--brand-blue);
     color: var(--white);
     border: none;
-    padding: 14px 28px;
+    padding: 12px 24px;
     border-radius: 12px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 10px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+    min-width: 160px;
+    justify-content: center;
 }
 
 /* --- Hero Section --- */
