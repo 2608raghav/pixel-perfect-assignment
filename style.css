@@ -179,8 +179,6 @@ body {
     display: flex;
     justify-content: flex-end;
     flex-shrink: 0;
-    /* Stronger negative margin to move image up higher than the text */
-    margin-top: 40px; 
 }
 
 .hero-visual img {
@@ -189,12 +187,12 @@ body {
     object-fit: contain;
 }
 
-/* Enhancing the Heading spacing */
 .main-heading {
     font-size: 60px; /* Reduced from 72px for a cleaner look */
     line-height: 1.1; 
-    font-weight: 800;
-    margin-bottom: 24px; /* Maintaining consistent 8pt grid gap */
+    display: block;
+    height: 100%;
+    object-fit: contain;
     letter-spacing: -1px;
 }
 
@@ -232,8 +230,9 @@ body {
 }
 
 .btn-filled, .btn-outline {
-    height: 56px;
-    padding: 0 40px;
+    width: 213px;
+    height: 46px;
+    padding: 0;
     font-size: 18px;
     font-weight: 600;
     border-radius: 12px;
@@ -261,9 +260,10 @@ body {
 }
 
 .hero-visual img {
+    display: block;
     width: 100%;
-    max-width: 750px; /* Significantly increased to cover the right side [cite: 868, 871] */
-    height: auto;
+    height: 100%;
+    object-fit: contain;
 }
 
 /* --- Why Section --- */
@@ -352,14 +352,15 @@ body {
 }
 
 .feature-card {
-    background: #FFFFFF;
-    border: 1px solid #EDEDED;
-    border-radius: 20px;
-   /* Increased padding from 20px 24px to 30px 24px to make cards bigger */
-    padding: 20px 24px; 
+    width: 594px;
+    height: 142px;
+    background: #FAFBFF;
+    border: 1px solid #E2E7FF;
+    border-radius: 8px;
+    padding: 20px;
     display: flex;
-    gap: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    gap: 11px;
+    opacity: 1;
 }
 
 
