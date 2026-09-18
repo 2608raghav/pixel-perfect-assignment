@@ -167,10 +167,13 @@ body {
 }
 
 .hero-description {
-    color: var(--text-muted);
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    opacity: 1;
     margin-bottom: 32px; /* Standardized gap */
     font-size: 18px;
-    line-height: 1.6;
+    line-height: 32px;
+    letter-spacing: 0;
 }
 
 .hero-visual {
